@@ -21,10 +21,15 @@ console.log(clients[lastElementIndex]); // "Ajax"
 // ^Ітерація по масиву
 // ~Цикл for
 for (let i = 0; i < clients.length; i += 1) {
+  // Дозволяє змінювати елементи масиву, бо в client[i] лежить посилання на клітинку пам'яті
+  // Дозволяє отримати доступ до індексу елементу
   console.log(clients[i]);
 }
 
 // ~Цикл for...of
+// Не дозволяє отримати доступ до індексу
+// Не дозволяє змінювати елементи масиву, бо в client лежить значення, а не посилання на клітинку пам'яті, як у випадку з for
+// Тобто під капотом відбувається ось це: client = client[i]
 for (const client of clients) {
   console.log(client);
 }
@@ -34,12 +39,21 @@ for (const character of string) {
   console.log(character);
 }
 
+// ~Метод includes()
+// під капотом робить перебір масиву і повертає true чи false по умові.
+const loginToFind = "Pango";
+const messageOfIncludes = clients.includes(loginToFind)
+  ? `Користувач ${loginToFind} знайдений`
+  : `Користувач ${loginToFind} не знайдений`;
+console.log("messageOfIncludes:::", messageOfIncludes);
+
 // ~Оператори break і continue
-// break - вихід з циклу
+// break - вихід з циклу (перериває його і виходить)
 // continue - перервати поточну ітерацію циклу.
 
 // ^Методи масиву
 // ~Методи split() і join()
+// Не змінює масив, а повертає новий (змінений).
 const userName = "Mango";
 console.log(userName.split("")); // ["M", "a", "n", "g", "o"]
 const message = "JavaScript - це цікаво";
@@ -134,5 +148,18 @@ console.log(allClientsWithOldFirst); // ["Mango", "Ajax", "Poly", "Kiwi", "Monko
 const allClientsWithNewFirst = newClients.concat(oldClients);
 console.log(allClientsWithNewFirst); // ["Monkong", "Singu", "Mango", "Ajax", "Poly", "Kiwi"]
 
-console.log(oldClients); // ["Mango", "Ajax", "Poly", "Kiwi"]
+console.table(oldClients); // ["Mango", "Ajax", "Poly", "Kiwi"]
 console.log(newClients); // ["Monkong", "Singu"]
+
+const moreArrays = newClients.concat(oldClients, colors2, clients5, [1, 2, 3], [90, 70]);
+console.log("moreArrays::::::::::::::::::::", moreArrays);
+
+// ^Багатомірний масив
+const matrix = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+];
+console.log(matrix[0][0]); // 1
+console.log(matrix[1][2]); // 6
+console.log(matrix[2][2]); // 9
