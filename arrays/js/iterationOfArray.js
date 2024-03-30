@@ -242,7 +242,6 @@ const totalScore = students.reduce((total, student) => {
 const averageScore = totalScore / students.length;
 
 // ~ Просунутий reduce
-
 // порахувати кількість унікальних тегів в масиві
 const tweets = [
   { id: "000", likes: 5, tags: ["js", "nodejs", "Oracle"] },
@@ -290,3 +289,95 @@ const countTags = (tags) => tags.reduce(getTagStats, {});
 
 const tagCount = countTags(tags);
 console.log("tagCount:::", tagCount);
+
+// * Метод sort()
+// Сортує і змінює вихідний масив.
+// Повертає змінений масив, тобто посилання на відсортований вихідний.
+// За замовчуванням сортує за зростанням.
+// Сортування відбувається шляхом приведення значень до рядка і порівняння порядкових номерів у таблиці Unicode.
+
+// Значення приводяться до рядка, тому стандартне сортування чисел працює некоректно.
+const scores = [27, 2, 41, 4, 7, 3, 75];
+scores.sort();
+console.log(scores); // [2, 27, 3, 4, 41, 7, 75]
+
+// Масив рядків сортується за алфавітом.
+const studentsForSort = ["Віка", "Андрій", "Олег", "Юля", "Борис", "Катя"];
+studentsForSort.sort();
+console.log(studentsForSort); // [ 'Андрій', 'Борис', 'Віка', 'Катя', 'Олег', 'Юля' ]
+
+// Порядковий номер великих літер менший, ніж у малих.
+const letters = ["b", "B", "a", "A", "c", "C"];
+letters.sort();
+console.log(letters); // ['A', 'B', 'C', 'a', 'b', 'c']
+
+// Щоб набути чистоти функції вихідний масив клонують
+const scoresIncome = [61, 19, 74, 35, 92, 56];
+const ascendingScores = [...scoresIncome].sort();
+console.log(scoresIncome); // [61, 19, 74, 35, 92, 56]
+console.log(ascendingScores); // [19, 35, 56, 61, 74, 92]
+
+// ~ Свій порядок сортування чисел
+// сортування за зростанням: якщо виклик compareFunction(a, b) повертає будь-яке від'ємне значення, тобто a менше b, сортування поставить a перед b
+const ascendingScoresAB = [...scoresIncome].sort((a, b) => a - b);
+console.log(ascendingScoresAB); // [19, 35, 56, 61, 74, 92]
+
+// сортування за спаданням: якщо виклик compareFunction(a, b) повертає будь-яке додатне значення більше нуля, тобто b більше a, сортування поставить b перед a
+const descendingScoresBA = [...scoresIncome].sort((a, b) => b - a);
+console.log(descendingScoresBA); // [92, 74, 61, 56, 35, 19]
+
+// Якщо виклик compareFunction(a, b) поверне 0, сортування залишить a і b незмінними по відношенню один до одного, але відсортує їх по відношенню до всіх інших елементів
+
+// ~ Свій порядок сортування рядків
+// використовується метод рядків localeCompare()
+firstString.localeCompare(secondString);
+// викликається на рядку, який потрібно порівняти (firstString) з тим, що був переданий йому як аргумент (secondString).
+"a".localeCompare("b"); // -1
+"b".localeCompare("a"); // 1
+"a".localeCompare("a"); // 0
+"b".localeCompare("b"); // 0
+// Повертає від'ємне значення, якщо firstString повинен бути перед secondString.
+// Повертає додатне значення більше нуля, якщо firstString повинен бути після secondString.
+// Якщо рядки однакові, повертається нуль.
+const studentsStringsArr = ["Віка", "Андрій", "Олег", "Юля", "Борис", "Катя"];
+
+const inAlphabetOrder = [...studentsStringsArr].sort((a, b) => a.localeCompare(b));
+console.log(inAlphabetOrder); // ['Андрій', 'Борис', 'Віка', 'Катя', 'Олег', 'Юля']
+
+const inReversedOrder = [...studentsStringsArr].sort((a, b) => b.localeCompare(a));
+console.log(inReversedOrder); // ['Юля', 'Олег', 'Катя', 'Віка', 'Борис', 'Андрій']
+
+// ~ Сортування об'єктів
+const studentsObjForSort = [
+  { name: "Манго", score: 83 },
+  { name: "Полі", score: 59 },
+  { name: "Аякс", score: 37 },
+  { name: "Ківі", score: 94 },
+];
+const inAscendingScoreOrder = studentsObjForSort.sort(
+  (firstStudent, secondStudent) => firstStudent.score - secondStudent.score,
+);
+const inDescendingScoreOrder = studentsObjForSort.sort(
+  (firstStudent, secondStudent) => secondStudent.score - firstStudent.score,
+);
+const inAlphabeticalOrder = studentsObjForSort.sort((firstStudent, secondStudent) =>
+  firstStudent.name.localeCompare(secondStudent.name),
+);
+
+// отримати масив імен студентів, відсортованих за зростанням балів за тест
+const studentsExample = [
+  { name: "Манго", score: 83, courses: ["математика", "фізика"] },
+  { name: "Полі", score: 59, courses: ["інформатика", "математика"] },
+  { name: "Аякс", score: 37, courses: ["фізика", "біологія"] },
+  { name: "Ківі", score: 94, courses: ["література", "інформатика"] },
+];
+
+const studentsSortedByScore = [...studentsExample].sort((a, b) => a.score - b.score).map((student) => student.name);
+console.log(studentsSortedByScore); // ['Аякс', 'Полі', 'Манго', 'Ківі']
+
+// Отримати масив унікальних відвідуваних предметів, відсортований за алфавітом.
+const uniqueSortedCourses = studentsExample
+  .flatMap((student) => student.courses)
+  .filter((course, index, array) => array.indexOf(course) === index)
+  .sort((a, b) => a.localeCompare(b));
+console.log(uniqueSortedCourses); // ['біологія', 'інформатика', 'література', 'математика', 'фізика']
