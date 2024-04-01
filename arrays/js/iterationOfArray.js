@@ -87,11 +87,39 @@ const studentsList = [
 const names = studentsList.map((student) => student.name);
 console.log(names); // ['Манго', 'Полі',  'Ківі']
 
-// * Метод flatMap()
-// "Розгладжує" масив на один рівень
+// * Методи flat та flatMap()
+// "Розгладжує" масив
+const multilevelArray = ["a1", "a1", ["b1", "b1", ["c1", "c1"]], "a2", "a2", ["b2", "b2", ["c2", "c2", ["d2", "d2"]]]];
+console.table("multilevelArray:::", multilevelArray); // ['a1', 'a1', Array(3), 'a2', 'a2', Array(3)]
+console.log("multilevelArray.flat():::", multilevelArray.flat()); // за замовчуванням розгладжує на 1 рівень: ['a1', 'a1', 'b1', 'b1', Array(2), 'a2', 'a2', 'b2', 'b2', Array(3)]
+console.log("multilevelArray.flat():::", multilevelArray.flat(2)); // розгладить до 2-го рівня: ['a1', 'a1', 'b1', 'b1', 'c1', 'c1', 'a2', 'a2', 'b2', 'b2', 'c2', 'c2', Array(2)]
+console.log("multilevelArray.flat():::", multilevelArray.flat(3)); // розгладить до 3-го рівня: ['a1', 'a1', 'b1', 'b1', 'c1', 'c1', 'a2', 'a2', 'b2', 'b2', 'c2', 'c2', 'd2', 'd2']
+
+const tweetsForFlat = [
+  { id: "000", likes: 5, tags: ["js", "nodejs", "Oracle"] },
+  { id: "001", likes: 2, tags: ["html", "css"] },
+  { id: "002", likes: 17, tags: ["html", "js", "nodejs"] },
+  { id: "003", likes: 8, tags: ["css", "react"] },
+  { id: "004", likes: 0, tags: ["js", "nodejs", "react"] },
+];
+
+const tags1 = tweetsForFlat.map((t) => t.tags);
+console.log("tags:::", tags1); // [Array(3), Array(2), Array(3), Array(2), Array(3)]
+console.log("tags:::", tags1.flat()); // ["js", "nodejs", "Oracle", "html", "css", "html", "js", "nodejs", "css", "react", "js", "nodejs", "react"];
+// Проблема такого підходу в тому, що падає продуктивність, бо бігає по масиву 2 рази.
+// Тому був зроблений щее один метод - flatMap, який розгладжує на 1 рівень:
+const tags2 = tweetsForFlat.flatMap((t) => t.tags);
+console.log("tags2:::", tags2); // ["js", "nodejs", "Oracle", "html", "css", "html", "js", "nodejs", "css", "react", "js", "nodejs", "react"];
+
+console.log(
+  "multilevelArray:::",
+  multilevelArray.flatMap((value) => value),
+); // розгладить на 1 рівень ['a1', 'a1', 'b1', 'b1', Array(2), 'a2', 'a2', 'b2', 'b2', Array(3)]
+
 // Кілька студентів можуть відвідувати один і той самий предмет. Необхідно скласти список всіх предметів, які відвідує ця група студентів, навіть повторюваних.
 const allCoursesMap = studentsList.map((student) => student.courses); // [['математика', 'фізика'], ['інформатика', 'математика'], ['фізика', 'біологія']]
 const allCoursesFlatMap = studentsList.flatMap((student) => student.courses); // ['математика', 'фізика', 'інформатика', 'математика', 'фізика', 'біологія'];
+// */ Методи flat та flatMap()
 
 // * Метод filter()
 // Використовується для пошуку всіх елементів, що задовольняють умову
@@ -215,6 +243,7 @@ const fruits = [
 const allAvailable = fruits.every((fruit) => fruit.amount > 0); // false
 // some поверне true, якщо хоча б одного фрукту буде більше 0 штук
 const anyAvailable = fruits.some((fruits) => fruits.amount > 0); // true
+// */ Методи every() і some()
 
 // * Метод reduce()
 // масив.reduce((previousValue, element, index, array) => { Тіло колбек-функції }, initialValue);
@@ -234,6 +263,9 @@ console.log(total); // 32
 // previousValue - акумулятор (проміжний результат)
 // Значення, яке поверне колбек-функція на поточній ітерації, буде значенням цього параметра на наступній ітерації.
 // Другим аргументом для reduce() можна передати необов'язкове початкове значення акумулятора - параметр initialValue.
+
+// Якщо в акумулятор не передати значення за замовчуванням, то його значення на першій ітерації буде дорівнювати першому елементу масиву.
+// На кожній наступній ітерації значення акумулятора буде дорівнювати тому, що повернули (return) в попередній ітерації.
 
 // Наприклад, необхідно отримати середній бал студентів
 const totalScore = students.reduce((total, student) => {
@@ -289,6 +321,7 @@ const countTags = (tags) => tags.reduce(getTagStats, {});
 
 const tagCount = countTags(tags);
 console.log("tagCount:::", tagCount);
+// */ Метод reduce()
 
 // * Метод sort()
 // Сортує і змінює вихідний масив.
