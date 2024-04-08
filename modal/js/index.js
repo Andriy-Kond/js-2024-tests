@@ -26,7 +26,7 @@ function onCloseModalByBackdrop(e) {
 }
 
 function onCloseModalByEsc(e) {
-  if (e.key === "Escape") {
+  if (e.code === "Escape") {
     onCloseModal();
   }
 }
