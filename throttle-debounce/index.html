@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="main-box">
+        <a class="main-link" href="../index.html">На головну</a>
+      </div>
+    </header>
+    <main>
+      <section class="fixed">
+        <p class="cta">Scroll me</p>
+
+        <div class="container">
+          <div class="box">
+            <p>No timing function</p>
+            <span class="output vanilla">0</span>
+          </div>
+
+          <div class="box">
+            <p>Throttled</p>
+            <span class="output throttled">0</span>
+          </div>
+
+          <div class="box">
+            <p>Trailing debounce</p>
+            <span class="output trailing">0</span>
+          </div>
+
+          <div class="box">
+            <p>Leading debounce</p>
+            <span class="output leading">0</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer></footer>
+
+    <!-- Lodash library script file -->
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+
+    <script type="module" src="./js/index.js"></script>
+  </body>
+</html>
