@@ -21,8 +21,8 @@ body {
 }
 
 .container {
-  position: sticky;
-  top: 100px;
+  /* position: fixed;
+  top: 200px; */
   display: flex;
   justify-content: center;
 }
@@ -52,6 +52,4 @@ body {
 
 .fixed {
   position: fixed;
-  top: 0;
-  left: 0;
 }

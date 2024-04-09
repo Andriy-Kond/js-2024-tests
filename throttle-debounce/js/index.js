@@ -31,13 +31,13 @@ document.addEventListener(
   ),
 );
 
-// vanilla
+// vanilla (chatty event)
 document.addEventListener("scroll", () => {
   eventCounter.vanilla += 1;
   vanillaOutput.textContent = eventCounter.vanilla;
 });
 
-// throttle
+// throttle by Lodash
 document.addEventListener(
   "scroll",
   _.throttle(() => {
