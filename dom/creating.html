@@ -14,16 +14,20 @@
     </header>
 
     <main>
-      <h1>Usernames</h1>
-
       <h3>Додавання</h3>
       <p>
-        element.append(el1, el2, ...) - додає один або декілька елементів після всіх дітей елемента element. <br />
-        element.prepend(el1, el2, ...) - додає один або декілька елементів перед усіма дітьми елемента element.<br />
-        element.after(el1, el2, ...) - додає один або декілька елементів після елемента element.<br />
-        element.before(el1, el2, ...) - додає один або декілька елементів перед елементом element.<br />
+        <b>element.append(el1, el2, ...)</b> - додає один або декілька елементів після всіх дітей елемента element.
+        <br />
+        <b>parentElem.appendChild(elem)</b> - додає ОДИН elem в кінець дочірніх елементів parentElem<br />
+        <b>parentElem.insertBefore(elem, nextSibling)</b> - додає ОДИН elem до дочірніх елементів parentElem перед
+        елементом nextSibling. Якщо другим елементом вказати null, то спрацює як <b>appendChild</b> <br />
+        <b>element.prepend(el1, el2, ...)</b> - додає один або декілька елементів перед усіма дітьми елемента
+        element.<br />
+        <b> element.after(el1, el2, ...)</b> - додає один або декілька елементів після елемента element.<br />
+        <b>element.before(el1, el2, ...)</b> - додає один або декілька елементів перед елементом element.<br />
       </p>
 
+      <h1>Usernames</h1>
       <ul class="usernames">
         <li>Mango</li>
       </ul>
@@ -45,8 +49,11 @@
         <a class="link" href="">Read more</a>
       </article>
 
-      <!-- Властивість innerHTML -->
+      <!-- * Властивість innerHTML -->
       <h2>Властивість innerHTML</h2>
+
+      <h3 class="title-test">Це <span>заголовок</span></h3>
+
       <h4>
         Використовуйте властивість elem.innerHTML для додавання тільки тоді, коли елемент elem - порожній, або якщо
         потрібно повністю замінити його вміст.
@@ -66,6 +73,7 @@
           спосіб видалення всього вмісту.
         </p>
 
+        <!-- ~ Шаблонна розмітка -->
         <h5>
           Однотипна (шаблонна) розмітка створюється із масиву даних. Прийом полягає у перебиранні цього масиву і
           складанні одного рядка з HTML-тегами, який потім записуємо в innerHTML елемента.
@@ -76,7 +84,7 @@
         </section>
       </article>
 
-      <!-- Метод insertAdjacentHTML() -->
+      <!-- * Метод insertAdjacentHTML() -->
       <p>
         elem.insertAdjacentHTML(position, string); <br />
         "beforebegin" - перед elem <br />

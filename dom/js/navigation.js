@@ -26,7 +26,7 @@ console.log("lastListItem:::", lastListItem);
 const listItems = list.children;
 console.log("listItems:::", listItems);
 
-// Стилі
+// * Стилі
 const button = document.querySelector(".btn");
 
 button.style.backgroundColor = "teal";
@@ -35,14 +35,17 @@ button.style.textAlign = "center";
 
 console.log("button.style", button.style); // inline styles object
 
-// Атрибути
+// * Атрибути
 const image = document.querySelector(".image");
-console.log("image.attributes:::", image.attributes); // NamedNodeMap {0: class, 1: src, 2: alt, length: 3}
 console.log('image.hasAttribute("src"):::', image.hasAttribute("src")); // true
 console.log('image.getAttribute("alt"):::', image.getAttribute("alt")); // "Rocks and waterfall"
 image.setAttribute("alt", "Amazing nature");
+// або:
+// image.alt = "Amazing nature";
 console.log('image.getAttribute("alt"):::', image.getAttribute("alt")); // Amazing nature
+image.width = 640;
+console.log("image.attributes:::", image.attributes); // NamedNodeMap {0: class, 1: src, 2: alt, 3: width, class: class, src: src, alt: alt, width: width, length: 4}
 
-// data-атрибути
+// * data-атрибути
 const saveBtn = document.querySelector('.editor button[data-action="save"]');
 console.log("saveBtn.dataset.action:::", saveBtn.dataset.action); //save

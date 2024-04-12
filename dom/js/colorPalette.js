@@ -1,4 +1,4 @@
-// Палітра кольорів
+// * Палітра кольорів
 const colorPalette = document.querySelector(".color-palette");
 const output = document.querySelector(".output");
 
