@@ -20,12 +20,13 @@ textInput.addEventListener("blur", () => {
 });
 
 // Фокус може бути тільки на одному елементі сторінки за одиницю часу
-// Елемент, на якому знаходиться фокус, доступний як document.activeElement.
+// & Елемент, на якому знаходиться фокус, доступний як document.activeElement.
 
 // Багато елементів не можуть отримати фокус. Наприклад, якщо клікнути по <div>, то фокусування на ньому не відбудеться, тому що це не інтерактивний елемент.
 
 // * Подія input
 // Спливає на кожне натискання клавіш
+// Використовується для інпутів
 const textInput2 = document.querySelector(".text-input-2");
 const output = document.querySelector(".output");
 
@@ -51,3 +52,30 @@ function setOutput(event) {
   textOutput.textContent = selectedOptionText;
   valueOutput.textContent = selectedOptionValue;
 }
+
+// * Клавіши-модифікатори
+// document.addEventListener("keydown", event => {
+//   event.preventDefault();
+
+//   if ((event.ctrlKey || event.metaKey) && event.code === "KeyS") {
+//     console.log("«Ctrl + s» or «Command + s» combo");
+//   }
+// });
+
+// * Спливання
+const parentEl = document.querySelector("#parent");
+const childEl = document.querySelector("#child");
+const descendantEl = document.querySelector("#descendant");
+
+parentEl.addEventListener("click", () => {
+  alert("Parent click handler. This alert will not appear when clicking on Descendant, the event will not reach here!");
+});
+
+childEl.addEventListener("click", () => {
+  alert("Child click handler. This alert will not appear when clicking on Descendant, the event will not reach here!");
+});
+
+descendantEl.addEventListener("click", event => {
+  event.stopPropagation();
+  alert("Descendant click handler");
+});

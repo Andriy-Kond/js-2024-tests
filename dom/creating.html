@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="main-box">
+        <a class="main-link" href="./index.html">До DOM</a>
+      </div>
+    </header>
+
+    <main>
+      <h1>Usernames</h1>
+
+      <h3>Додавання</h3>
+      <p>
+        element.append(el1, el2, ...) - додає один або декілька елементів після всіх дітей елемента element. <br />
+        element.prepend(el1, el2, ...) - додає один або декілька елементів перед усіма дітьми елемента element.<br />
+        element.after(el1, el2, ...) - додає один або декілька елементів після елемента element.<br />
+        element.before(el1, el2, ...) - додає один або декілька елементів перед елементом element.<br />
+      </p>
+
+      <ul class="usernames">
+        <li>Mango</li>
+      </ul>
+
+      <span
+        >Якщо елемент для додавання вже знаходиться в DOM, то він видаляється зі свого старого місця і додається у нове.
+        Тобто один і той самий елемент не може бути одночасно у двох місцях.</span
+      >
+
+      <h3>Видалення</h3>
+      <p>elem.remove(); - викликається на елементі elem, який необхідно видалити</p>
+      <article class="article">
+        <h2 class="title">Article title</h2>
+        <p class="text">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore, ipsa quibusdam! Praesentium accusantium
+          fugiat distinctio quidem minima fugit eos, veniam, nam laboriosam deleniti nisi qui neque explicabo
+          perspiciatis, consectetur non.
+        </p>
+        <a class="link" href="">Read more</a>
+      </article>
+
+      <!-- Властивість innerHTML -->
+      <h2>Властивість innerHTML</h2>
+      <h4>
+        Використовуйте властивість elem.innerHTML для додавання тільки тоді, коли елемент elem - порожній, або якщо
+        потрібно повністю замінити його вміст.
+      </h4>
+
+      <article class="article2">
+        <h2 class="title2">Article title</h2>
+        <p class="text2">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore, ipsa quibusdam!
+          <strong>Praesentium</strong> accusantium fugiat distinctio quidem minima fugit eos, veniam, nam laboriosam
+          deleniti nisi qui neque explicabo perspiciatis, consectetur non.
+        </p>
+        <a class="link2" href="">Read more</a>
+
+        <p>
+          Якщо у властивість innerHTML записати порожній рядок, то вміст елемента буде очищено. Це простий і швидкий
+          спосіб видалення всього вмісту.
+        </p>
+
+        <h5>
+          Однотипна (шаблонна) розмітка створюється із масиву даних. Прийом полягає у перебиранні цього масиву і
+          складанні одного рядка з HTML-тегами, який потім записуємо в innerHTML елемента.
+        </h5>
+        <section>
+          <h2>Popular technologies</h2>
+          <ul class="listTemplate"></ul>
+        </section>
+      </article>
+
+      <!-- Метод insertAdjacentHTML() -->
+      <p>
+        elem.insertAdjacentHTML(position, string); <br />
+        "beforebegin" - перед elem <br />
+        "afterbegin" - всередині elem, перед усіма дітьми <br />
+        "beforeend" - всередині elem, після усіх дітей <br />
+        "afterend" - після elem <br />
+        "beforebegin" і "afterend" працюють тільки тоді, коли elem вже знаходиться в DOM-дереві.
+      </p>
+
+      <ul class="list3">
+        <li class="list3-item">HTML</li>
+        <li class="list3-item">CSS</li>
+        <li class="list3-item">JavaScript</li>
+      </ul>
+    </main>
+
+    <footer></footer>
+
+    <script src="./js/creating.js"></script>
+  </body>
+</html>

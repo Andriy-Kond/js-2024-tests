@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/main.css  " />
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="main-box">
+        <a class="main-link" href="./index.html">До DOM</a>
+      </div>
+    </header>
+    <main>
+      <section>
+        <p>
+          elem.parentNode - вибере батьківський elem. <br />
+          elem.childNodes - псевдомасив, зберігає всі дочірні елементи, включно з текстовими.<br />
+          elem.children - псевдомасив, зберігає тільки дочірні вузли-елементи, тобто ті, що відповідають тегам.<br />
+          elem.firstChild - вибере перший дочірній елемент всередині elem, включно з текстовими вузлами.<br />
+          elem.firstElementChild - вибере перший дочірній вузол-елемент всередині elem.<br />
+          elem.lastChild - вибере останній дочірній елемент всередині elem, включно з текстовими вузлами.<br />
+          elem.lastElementChild - вибере останній дочірній вузол-елемент всередині elem.<br />
+          elem.previousSibling - вибере елемент «зліва» від elem (його попереднього сусіда).<br />
+          elem.previousElementSibling - вибере вузол-елемент «зліва» від elem (його попереднього сусіда).<br />
+          elem.nextSibling - вибере елемент «праворуч» від elem (його наступного сусіда)<br />
+          elem.nextElementSibling - вибере вузол-елемент «праворуч» від elem (його наступного сусіда).<br />
+        </p>
+        <ul class="list">
+          <li>First item</li>
+          <li>Second item</li>
+          <li>Third item</li>
+          <li>Fourth item</li>
+          <li>Fifth item</li>
+        </ul>
+      </section>
+
+      <section>
+        <p>element.querySelector(selector);</p>
+        <p>
+          Повертає перший знайдений елемент всередині element, що відповідає CSS-селектору selector. <br />
+          Якщо нічого не знайдено, поверне null.
+        </p>
+
+        <p>element.querySelectorAll(selector);</p>
+        <p>
+          Повертає псевдомасив всіх елементів всередині element, які відповідають CSS-селектору selector. <br />
+          Якщо нічого не знайдено, поверне порожній масив.
+        </p>
+      </section>
+
+      <section>
+        <p>Атрибути</p>
+        <p>
+          value - містить поточний текстовий контент елементів форм. <br />
+          checked - зберігає стан чекбокса або радіокнопки. <br />
+          name - зберігає значення, вказане в HTML-атрибуті name.<br />
+          src - шлях до зображення тегу img. <br />
+          <br />
+
+          elem.textContent повертає текстовий контент всередині елемента. <br />
+        </p>
+
+        <h3>classList</h3>
+        <p>
+          У властивості classList зберігається об'єкт з методами для роботи з класами елемента. <br />
+
+          elem.classList.contains(cls) - повертає true або false, залежно від наявності класу cls в елемента.<br />
+          elem.classList.add(cls) - додає клас cls до списку класів елемента.<br />
+          elem.classList.remove(cls) - видаляє клас cls зі списку класів елемента.<br />
+          elem.classList.toggle(cls) - якщо відсутній клас cls, то додає його, якщо - присутній, навпаки - видаляє.<br />
+          elem.classList.replace(oldClass, newClass) - замінює існуючий клас oldClass на вказаний newClass.<br />
+        </p>
+
+        <h3>Властивість style</h3>
+        <button class="btn">Кнопка</button>
+
+        <h3>Атрибути</h3>
+
+        <p>
+          elem.hasAttribute(name) - перевіряє наявність атрибута, повертає true або false. <br />
+          elem.getAttribute(name) - отримує значення атрибута і повертає його.<br />
+          elem.setAttribute(name, value) - встановлює атрибут.<br />
+          elem.removeAttribute(name) - видаляє атрибут.<br />
+          elem.attributes - властивість, що повертає об'єкт усіх атрибутів елемента.<br />
+        </p>
+        <img class="image" src="https://picsum.photos/id/15/320/240" alt="Rocks and waterfall" width="300" />
+
+        <h3>data-атрибути</h3>
+        <p>button type="button" data-action="save"> Save /></p>
+        <p>
+          const saveBtn = document.querySelector('button[data-action="save"]');<br />
+          console.log(saveBtn.dataset.action); // "save"
+        </p>
+        <div class="editor">
+          <p>
+            Donec id justo. Praesent porttitor, nulla vitae posuere iaculis, arcu nisl dignissim dolor, a pretium mi sem
+            ut ipsum. Curabitur suscipit suscipit tellus. Phasellus gravida semper nisi.
+          </p>
+          <div class="actions">
+            <button type="button" class="btn" data-action="save">Save text</button>
+            <button type="button" class="btn" data-action="close">Close editor</button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer></footer>
+    <script src="./js/navigation.js"></script>
+  </body>
+</html>

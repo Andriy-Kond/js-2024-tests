@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="main-box">
+        <a class="main-link" href="./index.html">До DOM</a>
+      </div>
+    </header>
+    <main>
+      <section>
+        <p>element.addEventListener(event, handler, options);</p>
+        <p>element.removeEventListener(event, handler, options);</p>
+        <p>
+          <b>event.type</b> - тип події. <br />
+
+          <b>event.currentTarget</b> - елемент, на якому виконується обробник події. <br />
+
+          <b>event.currentTarget</b> - це посилання на поточний елемент, до якого дійшло спливання, на ньому зараз
+          виконується обробник події. <br />
+
+          <b>event.target</b> - це посилання на вихідний елемент, на якому відбулася подія, в процесі спливання вона -
+          незмінна. <br />
+        </p>
+        <p>
+          Для форм (submit) чи посиланнь (відкриття в новому вікні) для скасування дії за замовчуванням:
+          <b>event.preventDefault();</b>
+        </p>
+      </section>
+
+      <section>
+        <h3>Ключове слово This</h3>
+        <span>
+          const mango = { <br />
+          username: "Mango",<br />
+          showUsername() {<br />
+          console.log(this);<br />
+          console.log(`My username is: ${this.username}`);<br />
+          },<br />
+          };<br />
+          const btn = document.querySelector(".js-btn");<br />
+          // ✅ Працює<br />
+          mango.showUsername();<br />
+          // ❌ this буде посилатися на button, якщо використовувати showUsername як callback<br />
+          btn.addEventListener("click", mango.showUsername); // не працює<br />
+          // ✅ Не забувайте прив'язувати контекст методів об'єкта<br />
+          btn.addEventListener("click", mango.showUsername.bind(mango));<br />
+        </span>
+      </section>
+
+      <h2>Події клавіатури</h2>
+      <p><b>keydown</b> - приймає оброку клавіш ESC, Shift, тощо</p>
+
+      <p>
+        Властивість key - клавіша в розкладці <br />
+        Властивість code - код клавіші не залежно від розкладки
+      </p>
+
+      <p>
+        <b>Клавіши-модифікатори</b>
+        Для обробки комбінації клавіш, наприклад Ctrl + s є властивості <b>ctrlKey, altKey, shiftkey і metaKey</b>, що
+        зберігають булеве значення, яке сигналізує про те, чи була затиснута клавіша-модифікатор.
+      </p>
+
+      <p>
+        document.addEventListener("keydown", event => { <br />
+        event.preventDefault();<br />
+
+        if ((event.ctrlKey || event.metaKey) && event.code === "KeyS") {<br />
+        console.log("«Ctrl + s» or «Command + s» combo");<br />
+        }<br />
+        });<br />
+      </p>
+
+      <section class="change-event">
+        <h3>change-event</h3>
+        <p>Selected option text: <span class="text-output">none</span></p>
+        <p>Selected option value: <span class="value-output">none</span></p>
+
+        <p>
+          <select class="pizza-select">
+            <option value="four_meats">Four Meats</option>
+            <option value="royal_cheese">Royal Cheese</option>
+            <option value="vegetarian">Vegetarian</option>
+            <option value="smoked_salmon">Smoked Salmon</option>
+          </select>
+        </p>
+      </section>
+
+      <section class="input-event">
+        <h3>input-event</h3>
+        <input type="text" class="text-input-2" />
+        <p>Text field value: <span class="output"></span></p>
+      </section>
+
+      <section class="focus-blur">
+        <h3>focus & blur</h3>
+        <button type="button" data-action="set">Set focus to input</button>
+        <button type="button" data-action="remove">Remove focus from input</button>
+        <br /><br />
+        <input type="text" class="text-input" />
+      </section>
+
+      <section>
+        <h4>Спливання</h4>
+        <div id="parent">
+          Parent
+          <div id="child">
+            Child
+            <div id="descendant">Descendant</div>
+          </div>
+        </div>
+
+        <p>Припинення спливання: <b>stopPropagation()</b></p>
+        <span
+          >Якщо елемент має декілька обробників на одну подію, то, навіть у разі припинення спливання, усі вони будуть
+          виконані. Тобто метод <b>stopPropagation()</b> тільки перешкоджає просуванню події далі. Якщо необхідно
+          повністю зупинити обробку події, використовується метод <b>stopImmediatePropagation()</b>. Він не тільки
+          запобігає спливанню, але й зупиняє обробку подій на поточному елементі.</span
+        >
+      </section>
+    </main>
+    <footer></footer>
+    <script src="./js/events.js"></script>
+  </body>
+</html>
