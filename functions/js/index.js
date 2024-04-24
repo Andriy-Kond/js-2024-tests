@@ -1,9 +1,9 @@
 // *Функціональний вираз (function expression) - звичайне оголошення змінної const. Тому його не можна викликати до оголошення.
-// // ❌ Помилка! Не працює виклик до оголошення
-// multiplyExpression(1, 2, 3);
-// const multiplyExpression = function (x, y, z) {
-//   console.log(`Результат множення дорівнює ${x * y * z}`);
-// };
+
+// multiplyExpression(1, 2, 3); // ❌ Помилка! Не працює виклик до оголошення
+const multiplyExpression = function (x, y, z) {
+  console.log(`Результат множення дорівнює ${x * y * z}`);
+};
 // ✅ Працює виклик після оголошення
 multiplyExpression(4, 5, 6);
 
