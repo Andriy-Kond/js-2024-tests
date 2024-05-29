@@ -1,3 +1,4 @@
+// Magic game
 // ^ Наслідування
 class Hero {
   constructor({ name = "hero", xp = 0 } = {}) {

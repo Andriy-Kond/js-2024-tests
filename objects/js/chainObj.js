@@ -1,6 +1,4 @@
-const objC = {
-  z: 5,
-};
+const objC = { z: 5 };
 console.log("objC:::", objC); // objC::: {z: 5}
 
 const objB = Object.create(objC);

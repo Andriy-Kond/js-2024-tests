@@ -1,8 +1,5 @@
 class Car {
   static #MAX_PRICE = 50000;
-  // Change code below this line
-
-  // Change code above this line
   constructor({ price }) {
     this.price = price;
   }

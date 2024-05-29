@@ -39,7 +39,7 @@ const books = [
 for (const book of books) {
   const { title, author, rating } = book;
   // або:
-  // for (const { title, author, rating } of books) {... }
+  // for (const { title, author, rating } of book) {... }
 
   console.log(title);
   console.log(author);
@@ -69,11 +69,10 @@ console.log(followers); // 5603
 console.log(userViews); // 4827
 console.log(userLikes); // 1308
 
-
 // ^ Деструктуризація масивів
 const rgb = [200, 100, 255];
 const [red, green, blue, alfa = 0.3] = rgb;
-console.log(`R:${red},G:${green},B:${blue},Alfa:${alfa}`); // "R:200,G:100,B:255,Alfa:0.3"
+console.log(`R:${red}, G:${green}, B:${blue}, Alfa:${alfa}`); // "R:200, G:100, B:255, Alfa:0.3"
 
 const [red2, ...colors] = rgb;
 console.log(red2); // "200"

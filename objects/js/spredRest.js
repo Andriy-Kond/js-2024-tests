@@ -1,17 +1,20 @@
 // ^spred та rest
 const temps = [14, -4, 25, 8, 11];
 console.log("temps:::", temps);
-// ❌ Так не спрацює, тому що передаємо цілий масив
+
+// ❌ Так не спрацює, тому що передаємо цілий масив:
 console.log("Math.max(temps)", Math.max(temps)); // NaN
-// ✅ Розподілимо колекцію елементів у якості окремих аргументів
+
+// ✅ Розподілимо колекцію елементів у якості окремих аргументів:
 console.log("Math.max(...temps)", Math.max(...temps)); // 25
 
 // spread: Створення нового масиву
 const copyOfTemps = [...temps];
 
+// spread: Об'єднання масивів ( замість concat() )
 const lastWeekTemps = [14, 25, 11];
 const currentWeekTemps = [23, 17, 18];
-const allTemps = [...lastWeekTemps, ...currentWeekTemps]; // замість concat
+const allTemps = [...lastWeekTemps, ...currentWeekTemps]; // замість concat()
 
 // spread: створення нового об'єкта (порядок має значення - змінні з однаковим ім'ям перезаписуються)
 const first = { propA: 5, propB: 10, propC: 50 };
